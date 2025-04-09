@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, WhatsApp } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -47,7 +47,7 @@ const Header = () => {
             rel="noopener noreferrer"
             className="hidden md:flex items-center gap-2 bg-black text-white px-4 py-2 rounded-md hover:bg-black/80 transition-colors"
           >
-            <WhatsApp size={18} />
+            <MessageCircle size={18} />
             <span>Contact Us</span>
           </a>
 
@@ -81,7 +81,7 @@ const Header = () => {
               className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-md w-fit"
               onClick={() => setIsOpen(false)}
             >
-              <WhatsApp size={18} />
+              <MessageCircle size={18} />
               <span>Contact Us</span>
             </a>
           </nav>
