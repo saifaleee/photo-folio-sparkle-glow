@@ -1,13 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from "react";
+import MainLayout from "../components/Layout/MainLayout";
+import HeroSlider from "../components/Home/HeroSlider";
+import FeaturedGallery from "../components/Home/FeaturedGallery";
+import AboutSection from "../components/Home/AboutSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <MainLayout hideFooter={false}>
+      <div className="min-h-screen">
+        <HeroSlider />
+        <FeaturedGallery />
+        <AboutSection />
+        
+        <section className="py-20 text-center bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <h2 className="text-2xl md:text-3xl font-cormorant mb-6">Let's Work Together</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+              I'm currently accepting new projects and would love to hear about your ideas.
+            </p>
+            <a 
+              href="/contact" 
+              className="inline-block border border-gray-300 px-8 py-3 hover:bg-black hover:text-white hover:border-black transition-colors duration-300"
+            >
+              Get in Touch
+            </a>
+          </div>
+        </section>
       </div>
-    </div>
+    </MainLayout>
   );
 };
 
