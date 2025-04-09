@@ -52,7 +52,7 @@ const HeroSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 4000); // Updated to 4 seconds as requested
     
     return () => clearInterval(interval);
   }, [currentSlide]);

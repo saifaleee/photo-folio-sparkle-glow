@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, WhatsApp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,10 +34,22 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <Link to="/" className="nav-link">Home</Link>
-            <Link to="/gallery" className="nav-link">Gallery</Link>
-            <Link to="/about" className="nav-link">About</Link>
+            <Link to="/designs" className="nav-link">Designs</Link>
+            <Link to="/flyers" className="nav-link">Animated Flyers</Link>
+            <Link to="/photography" className="nav-link">Photography</Link>
             <Link to="/contact" className="nav-link">Contact</Link>
           </nav>
+
+          {/* WhatsApp Contact Button */}
+          <a 
+            href="https://wa.me/971545437019" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hidden md:flex items-center gap-2 bg-black text-white px-4 py-2 rounded-md hover:bg-black/80 transition-colors"
+          >
+            <WhatsApp size={18} />
+            <span>Contact Us</span>
+          </a>
 
           {/* Mobile Menu Button */}
           <button 
@@ -55,9 +68,22 @@ const Header = () => {
         <div className="container mx-auto px-4 py-8">
           <nav className="flex flex-col space-y-6">
             <Link to="/" className="text-xl" onClick={() => setIsOpen(false)}>Home</Link>
-            <Link to="/gallery" className="text-xl" onClick={() => setIsOpen(false)}>Gallery</Link>
-            <Link to="/about" className="text-xl" onClick={() => setIsOpen(false)}>About</Link>
+            <Link to="/designs" className="text-xl" onClick={() => setIsOpen(false)}>Designs</Link>
+            <Link to="/flyers" className="text-xl" onClick={() => setIsOpen(false)}>Animated Flyers</Link>
+            <Link to="/photography" className="text-xl" onClick={() => setIsOpen(false)}>Photography</Link>
             <Link to="/contact" className="text-xl" onClick={() => setIsOpen(false)}>Contact</Link>
+            
+            {/* WhatsApp Contact Button (Mobile) */}
+            <a 
+              href="https://wa.me/971545437019" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-md w-fit"
+              onClick={() => setIsOpen(false)}
+            >
+              <WhatsApp size={18} />
+              <span>Contact Us</span>
+            </a>
           </nav>
         </div>
       </div>
