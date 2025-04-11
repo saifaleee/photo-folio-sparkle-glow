@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { supabase } from "@/lib/supabase";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -21,26 +22,47 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Submit form data to Supabase
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([
+          { 
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message 
+          }
+        ]);
+      
+      if (error) throw error;
+      
       toast({
         title: "Message sent",
         description: "Thank you for your message. I'll get back to you soon!",
       });
       
+      // Reset form after successful submission
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: ""
       });
-      
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
